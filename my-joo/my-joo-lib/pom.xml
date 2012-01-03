@@ -30,7 +30,7 @@
         <groupId>net.jangaroo</groupId>
         <artifactId>jangaroo-maven-plugin</artifactId>
         <extensions>true</extensions>
-        <version>0.8.4</version>
+        <version>0.9.7</version>
       </plugin>
     </plugins>
   </build>
@@ -38,7 +38,7 @@
     <dependency>
       <groupId>net.jangaroo</groupId>
       <artifactId>jangaroo-runtime</artifactId>
-      <version>0.8.4</version>
+      <version>0.9.7</version>
       <type>jangaroo</type>
     </dependency>
   </dependencies>
