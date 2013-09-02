@@ -23,6 +23,11 @@
   <name>my-joo-lib</name>
   <description>A Hello World Jangaroo Module</description>
 
+  <properties>
+    <jangaroo.plugin.version>1.0.1</jangaroo.plugin.version>
+    <jangaroo.libs.version>1.0.2</jangaroo.libs.version>
+  </properties>
+  
   <build>
     <sourceDirectory>src/main/joo</sourceDirectory>
     <plugins>
@@ -30,7 +35,7 @@
         <groupId>net.jangaroo</groupId>
         <artifactId>jangaroo-maven-plugin</artifactId>
         <extensions>true</extensions>
-        <version>0.9.7</version>
+        <version>${jangaroo.plugin.version}</version>
       </plugin>
     </plugins>
   </build>
@@ -38,7 +43,7 @@
     <dependency>
       <groupId>net.jangaroo</groupId>
       <artifactId>jangaroo-runtime</artifactId>
-      <version>0.9.7</version>
+      <version>${jangaroo.plugin.version}</version>
       <type>jangaroo</type>
     </dependency>
   </dependencies>
