@@ -24,8 +24,8 @@
   <description>A Modular Hello World Jangaroo Application</description>
 
   <properties>
-    <jangaroo.plugin.version>1.0.1</jangaroo.plugin.version>
-    <jangaroo.libs.version>1.0.2</jangaroo.libs.version>
+    <jangaroo.plugin.version>2.0.7</jangaroo.plugin.version>
+    <jangaroo.libs.version>2.0.5</jangaroo.libs.version>
     <jetty.plugin.version>8.1.5.v20120716</jetty.plugin.version>
   </properties>
 
@@ -47,13 +47,33 @@
         </executions>
       </plugin>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <webResources>
+            <resource>
+              <directory>target/jangaroo-output</directory>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
-        <version>${jetty.plugin.version}</version>
+        <version>8.1.5.v20120716</version>
         <configuration>
-          <webAppSourceDirectory>target/${project.build.finalName}</webAppSourceDirectory>
-          <stopPort>8083</stopPort>
-          <stopKey>STOP_ME</stopKey>
+          <stopKey>STOPME</stopKey>
+          <stopPort>8003</stopPort>
+          <webAppConfig>
+            <baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
+              <resourcesAsCSV>
+                ../my-joo-lib/target/classes/META-INF/resources,
+                target/jangaroo-output,
+                src/main/webapp
+              </resourcesAsCSV>
+            </baseResource>
+          </webAppConfig>
         </configuration>
       </plugin>
     </plugins>
@@ -73,13 +93,11 @@
       <groupId>net.jangaroo</groupId>
       <artifactId>jangaroo-browser</artifactId>
       <version>${jangaroo.libs.version}</version>
-      <type>jangaroo</type>
     </dependency>
     <dependency>
       <groupId>com.acme</groupId>
       <artifactId>my-joo-lib</artifactId>
       <version>${project.version}</version>
-      <type>jangaroo</type>
     </dependency>
   </dependencies>
 </project>
