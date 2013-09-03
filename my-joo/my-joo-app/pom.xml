@@ -43,20 +43,11 @@
               <goal>compile</goal>
               <goal>war-package</goal>
             </goals>
+            <configuration>
+              <packageSourceDirectory>target/${project.build.finalName}</packageSourceDirectory>
+            </configuration>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.3</version>
-        <configuration>
-          <webResources>
-            <resource>
-              <directory>target/jangaroo-output</directory>
-            </resource>
-          </webResources>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
@@ -65,15 +56,7 @@
         <configuration>
           <stopKey>STOPME</stopKey>
           <stopPort>8003</stopPort>
-          <webAppConfig>
-            <baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
-              <resourcesAsCSV>
-                ../my-joo-lib/target/classes/META-INF/resources,
-                target/jangaroo-output,
-                src/main/webapp
-              </resourcesAsCSV>
-            </baseResource>
-          </webAppConfig>
+          <webAppSourceDirectory>target/${project.build.finalName}</webAppSourceDirectory>
         </configuration>
       </plugin>
     </plugins>
